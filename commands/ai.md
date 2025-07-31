@@ -21,7 +21,7 @@
 - Multi-module/service impact
 - Complete planning and implementation required
 
-**Action**: Use task-dispatch-director to coordinate multiple agents (ultrathink analysis enabled)
+**Action**: Use task-dispatch-planner to create execution plan, then main Claude Code executes agents sequentially
 
 ## ⚡ Auto-Trigger Conditions
 Call agents automatically when:
@@ -45,7 +45,7 @@ Handle without agents:
 ## 👥 Team Members (when using `/ai list`)
 
 ### 🏛️ Leadership & Strategy
-- 🎯 **task-dispatch-director** - Task coordination hub (⚠️ Never calls itself)
+- 📋 **task-dispatch-planner** - Task planning specialist (creates execution roadmaps, never executes)
 - 🏗️ **cto** - Technical strategy and architecture decisions
 - 📊 **product-manager** - Product requirements and PRD creation
 
@@ -137,13 +137,13 @@ Handle without agents:
 ### ✅ Correct Usage
 - "Build Vue.js SPA" → vue-developer
 - "Create FastAPI service" → fastapi-expert
-- "Design Go microservice system" → go-architect + devops-engineer
-- "Develop Xposed module for Root bypass" → xposed-developer + android-hooking-expert
+- "Design Go microservice system" → task-dispatch-planner → main CC executes: go-architect + devops-engineer
+- "Develop Xposed module for Root bypass" → task-dispatch-planner → main CC executes: xposed-developer + android-hooking-expert
 
 ### ❌ Avoid Over-invocation
-- "Explain this function" → Handle directly (not technical-researcher + cto)
+- "Explain this function" → Handle directly (not task-dispatch-planner)
 - "Change config file" → Handle directly (not infrastructure-developer + devops-engineer)
-- "Vue vs React?" → Handle directly or technical-researcher (not multiple developers)
+- "Vue vs React?" → Handle directly or technical-researcher (not task-dispatch-planner)
 
 ## 🎮 Command Modes
 

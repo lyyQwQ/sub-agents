@@ -54,7 +54,7 @@ claude-ai-agents/
 │   ├── devops-engineer.md      # DevOps & deployment
 │   ├── code-review-expert.md   # Code quality guardian
 │   ├── test-expert.md          # Testing strategist
-│   ├── task-dispatch-director.md # Central coordinator
+│   ├── task-dispatch-planner.md  # Planning specialist (NEW)
 │   └── ... (more agents)
 ├── commands/
 │   └── ai.md                   # AI team orchestration
@@ -218,7 +218,7 @@ claude-ai-agents/
 │   ├── devops-engineer.md      # DevOps与部署
 │   ├── code-review-expert.md   # 代码质量守护者
 │   ├── test-expert.md          # 测试策略师
-│   ├── task-dispatch-director.md # 中央协调器
+│   ├── task-dispatch-planner.md  # 规划专家 (新增)
 │   └── ... (更多代理)
 ├── commands/
 │   └── ai.md                   # AI团队编排

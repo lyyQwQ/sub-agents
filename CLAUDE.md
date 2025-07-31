@@ -24,7 +24,7 @@ You have access to a complete AI development team. ONLY invoke team members when
 - Multiple professional domains required
 - Affects multiple modules or services
 - Complete planning and implementation needed
-**Action**: Use task-dispatch-director to coordinate multiple agents
+**Action**: Use task-dispatch-planner to create execution plan, then main Claude Code executes agents sequentially
 
 ### Agent Selection Rules
 
@@ -41,6 +41,39 @@ Only call agents automatically when:
 3. Explicitly requests "architecture design" or "system refactoring"
 4. Security analysis needs multi-angle approach
 5. Performance issues need deep multi-layer optimization
+
+**New Workflow**: For complex tasks, call task-dispatch-planner first to get execution plan, then manually execute agents as recommended
+
+## Important Workflow Changes (Updated: 2025-07-31)
+
+Due to Claude Code platform updates, agent-to-agent calls are temporarily disabled. This affects our workflow:
+
+### Old Workflow (Deprecated)
+```
+User Request → task-dispatch-director → Automatically calls multiple agents → Results
+```
+
+### New Workflow (Current)  
+```
+User Request → task-dispatch-planner → Creates execution plan → Main Claude Code manually executes each agent → Results
+```
+
+### Key Changes
+1. **task-dispatch-director** replaced by **task-dispatch-planner** 
+2. **task-dispatch-planner** only creates plans, never executes agents
+3. Main Claude Code must manually call each agent following the plan
+4. Sequential execution replaces automatic parallel agent spawning
+
+### When to Use task-dispatch-planner
+- Complex tasks requiring 3+ agents
+- Multi-domain expertise needed
+- Architecture design and system refactoring
+- Cross-system changes affecting multiple modules
+
+### Implementation Notes
+- task-dispatch-planner provides structured execution plans with specific agent recommendations
+- Each plan includes call examples: `/ai "[task description]"` → [agent-name]
+- Main Claude Code follows the plan step-by-step, calling agents in recommended sequence
 
 ### Direct Handling
 Handle directly without agents:
@@ -75,13 +108,13 @@ Handle directly without agents:
 ### Correct Usage
 User: "Build a Vue.js single page application" → vue-developer
 User: "Create FastAPI async service" → fastapi-expert
-User: "Design Go microservice system" → go-architect + devops-engineer
-User: "Develop Xposed module for Root detection bypass" → xposed-developer + android-hooking-expert
+User: "Design Go microservice system" → task-dispatch-planner → main CC executes: go-architect + devops-engineer
+User: "Develop Xposed module for Root detection bypass" → task-dispatch-planner → main CC executes: xposed-developer + android-hooking-expert
 
 ### Avoid Over-invocation
-User: "Explain this function" → Handle directly (not technical-researcher + cto)
+User: "Explain this function" → Handle directly (not task-dispatch-planner)
 User: "Change config file" → Handle directly (not infrastructure-developer + devops-engineer)
-User: "Go vs Rust for project?" → Handle directly or technical-researcher (not multiple architects)
+User: "Go vs Rust for project?" → Handle directly or technical-researcher (not task-dispatch-planner)
 
 # Important Instructions
 Do what has been asked; nothing more, nothing less.
